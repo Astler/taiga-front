@@ -151,6 +151,14 @@ input[type="time"] {
     background: $m3-surface-container-high;
 }
 
+.main.detail {
+    padding: 1rem;
+
+    @media screen and (max-width: 768px) {
+        padding: .75rem;
+    }
+}
+
 .detail {
     background: $m3-background;
 
