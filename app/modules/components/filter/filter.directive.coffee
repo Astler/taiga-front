@@ -50,8 +50,7 @@ FilterDirective = () ->
             onRemoveCustomFilter: "&",
             onSaveCustomFilter: "&",
             customFilters: "<",
-            filters: "<"
-            customFilters: "<"
+            filters: "<",
             selectedFilters: "<"
         },
         bindToController: true,

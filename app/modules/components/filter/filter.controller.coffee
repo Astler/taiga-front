@@ -17,6 +17,9 @@ class FilterController
 
     constructor: (@translate) ->
         @.opened = null
+        @.filters ?= []
+        @.customFilters ?= []
+        @.selectedFilters ?= []
         @.filterModeOptions = ["include", "exclude"]
         @.filterModeLabels = {
             "include": @translate.instant("COMMON.FILTERS.ADVANCED_FILTERS.INCLUDE"),
