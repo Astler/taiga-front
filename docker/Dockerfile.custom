@@ -1,17 +1,8 @@
 # syntax=docker/dockerfile:1.7
 
-FROM node:16.19.1-bullseye-slim AS build
+FROM node:16.19.1-bullseye AS build
 
 WORKDIR /src
-
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends \
-        ca-certificates \
-        git \
-        g++ \
-        make \
-        python3 \
-    && rm -rf /var/lib/apt/lists/*
 
 COPY package.json package-lock.json ./
 RUN npm ci
