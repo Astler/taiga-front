@@ -4,6 +4,15 @@ FROM node:16.19.1-bullseye-slim AS build
 
 WORKDIR /src
 
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        ca-certificates \
+        git \
+        g++ \
+        make \
+        python3 \
+    && rm -rf /var/lib/apt/lists/*
+
 COPY package.json package-lock.json ./
 RUN npm ci
 
