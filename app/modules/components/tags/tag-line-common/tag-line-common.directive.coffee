@@ -10,8 +10,6 @@ module = angular.module('taigaCommon')
 
 TagLineCommonDirective = () ->
     link = (scope, el, attr, ctrl) ->
-        eventNamespace = ".tag-line-common-#{scope.$id}"
-
         if !_.isUndefined(attr.disableColorSelection)
             ctrl.disableColorSelection = true
 
@@ -41,15 +39,6 @@ TagLineCommonDirective = () ->
                     ctrl.addNewTag(ctrl.newTag.name, ctrl.newTag.color)
 
             scope.$apply()
-
-        $(document).on "click#{eventNamespace}", (event) ->
-            return if !ctrl.addTag || el[0].contains(event.target)
-
-            scope.$apply -> ctrl.closeTagInput()
-
-        scope.$on "$destroy", ->
-            $(document).off(eventNamespace)
-
     return {
         link: link,
         scope: {
