@@ -47,6 +47,7 @@ DropdownProjectListDirective = (rootScope, currentUserService, projectsService, 
 
             pinnedProjectsService.toggle(project.get("id"))
             refreshProjects()
+            rootScope.$broadcast("pinned-projects:updated")
 
         updateLinks = ->
             el.find(".dropdown-project-list ul li a").data("fullUrl", "")

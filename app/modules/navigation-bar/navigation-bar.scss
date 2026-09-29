@@ -32,6 +32,8 @@ $dropdown-width: 260px;
         }
     }
     .nav-left {
+        min-width: 0;
+
         .logo {
             padding: .3rem .4rem;
 
@@ -39,6 +41,28 @@ $dropdown-width: 260px;
                 @include svg-size(2.2rem);
 
                 fill: $color-black600;
+            }
+        }
+
+        .pinned-project-shortcuts {
+            align-items: center;
+            display: flex;
+            gap: .25rem;
+            height: 100%;
+            margin-left: .25rem;
+        }
+
+        .pinned-project-shortcut {
+            align-items: center;
+            display: flex;
+            flex: 0 0 2.25rem;
+            height: 2.25rem;
+            justify-content: center;
+            width: 2.25rem;
+
+            img {
+                height: 1.5rem;
+                width: 1.5rem;
             }
         }
     }

@@ -6,13 +6,43 @@
 # Copyright (c) 2021-present Kaleidos INC
 ###
 
-NavigationBarDirective = (currentUserService, navigationBarService, locationService, navUrlsService, config, feedbackService) ->
+NavigationBarDirective = (
+    currentUserService,
+    navigationBarService,
+    locationService,
+    navUrlsService,
+    config,
+    feedbackService,
+    pinnedProjectsService,
+    projectService
+) ->
     link = (scope, el, attrs, ctrl) ->
         scope.vm = {}
+        scope.vm.pinnedProjects = Immutable.List()
+        scope.vm.hiddenPinnedProjects = 0
+
+        refreshPinnedProjects = ->
+            projects = currentUserService.projects.get("all") or Immutable.List()
+            pinnedProjects = projects.filter (project) ->
+                pinnedProjectsService.isPinned(project.get("id"))
+
+            scope.vm.pinnedProjects = pinnedProjects.take(6)
+            scope.vm.hiddenPinnedProjects = Math.max(pinnedProjects.size - 6, 0)
+
+        pinnedProjectsService.load().then refreshPinnedProjects
 
         taiga.defineImmutableProperty(scope.vm, "projects", () -> currentUserService.projects.get("recents"))
         taiga.defineImmutableProperty(scope.vm, "isAuthenticated", () -> currentUserService.isAuthenticated())
         taiga.defineImmutableProperty(scope.vm, "isEnabledHeader", () -> navigationBarService.isEnabledHeader())
+        taiga.defineImmutableProperty(scope.vm, "currentProject", () ->
+            if projectService.project
+                return projectService.project.get("id")
+
+            return null
+        )
+
+        scope.$on "pinned-projects:updated", refreshPinnedProjects
+        scope.$on "dropdown-project-list:updated", refreshPinnedProjects
 
         scope.vm.publicRegisterEnabled = config.get("publicRegisterEnabled")
         scope.vm.customSupportUrl = config.get("supportUrl")
@@ -85,7 +115,9 @@ NavigationBarDirective.$inject = [
     "$tgLocation",
     "$tgNavUrls",
     "$tgConfig",
-    "tgFeedbackService"
+    "tgFeedbackService",
+    "tgPinnedProjectsService",
+    "tgProjectService"
 ]
 
 angular.module("taigaNavigationBar").directive("tgNavigationBar", NavigationBarDirective)

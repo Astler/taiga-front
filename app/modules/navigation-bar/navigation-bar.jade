@@ -28,6 +28,32 @@ nav.navbar(ng-if="vm.isEnabledHeader")
             active="vm.active == 'projects' || vm.active == 'project'"
         )
 
+        .pinned-project-shortcuts(
+            ng-if="vm.isAuthenticated && vm.pinnedProjects.size"
+            aria-label="Pinned projects"
+        )
+            a.pinned-project-shortcut(
+                href="#"
+                tg-repeat="project in vm.pinnedProjects track by project.get('id')"
+                tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
+                ng-class="{'active': vm.currentProject == project.get('id'), 'blocked-project': project.get('blocked_code')}"
+                ng-attr-aria-label="Open {{::project.get('name')}}"
+                title="{{::project.get('name')}}"
+            )
+                img(
+                    tg-project-logo-small-src="::project"
+                    alt=""
+                )
+
+            a.pinned-project-shortcut.pinned-project-shortcut-more(
+                ng-if="vm.hiddenPinnedProjects"
+                href="#"
+                tg-nav="projects"
+                ng-attr-aria-label="View {{vm.hiddenPinnedProjects}} more pinned projects"
+                title="More pinned projects"
+            )
+                | +{{vm.hiddenPinnedProjects}}
+
     .nav-right.center(ng-if="!vm.isAuthenticated")
         a.login(
             ng-click="vm.login()"
