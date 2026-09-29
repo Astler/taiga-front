@@ -64,6 +64,15 @@ describe "TagLineCommon", ->
         TagLineCommonCtrl.displayTagInput()
         expect(TagLineCommonCtrl.addTag).to.be.true
 
+    it "closes and clears the tag input", () ->
+        TagLineCommonCtrl.addTag = true
+        TagLineCommonCtrl.newTag = {name: "backend", color: "#fff"}
+
+        TagLineCommonCtrl.closeTagInput()
+
+        expect(TagLineCommonCtrl.addTag).to.be.false
+        expect(TagLineCommonCtrl.newTag).to.be.eql({name: "", color: null})
+
     it "filters available tags by query and selected tags", () ->
         TagLineCommonCtrl.tags = [["frontend", "#fff"]]
         TagLineCommonCtrl.colorArray = [
@@ -104,3 +113,4 @@ describe "TagLineCommon", ->
         expect(TagLineCommonCtrl.onAddTag).have.been.calledWith({name: tag, color: color})
         expect(TagLineCommonCtrl.newTag.name).to.be.eql("")
         expect(TagLineCommonCtrl.newTag.color).to.be.null
+        expect(TagLineCommonCtrl.addTag).to.be.false

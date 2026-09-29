@@ -1,22 +1,227 @@
-// Theme-wide browser hints and controls that are not driven by Taiga's Sass
-// variables.
+// Material 3 component layer for the legacy Taiga UI. Color roles live in
+// variables.scss; this file adds shape, elevation and interaction states that
+// cannot be expressed through the original Taiga variables.
 
 :root {
     color-scheme: dark;
 }
 
-input,
+html,
+body,
+.master {
+    background: $m3-background;
+    color: $m3-on-surface;
+}
+
+::selection {
+    background: $m3-primary-container;
+    color: $m3-on-primary-container;
+}
+
+a {
+    color: $m3-primary;
+}
+
+*:focus-visible {
+    outline: 2px solid $m3-primary;
+    outline-offset: 2px;
+}
+
+input[type='text'],
+input[type='number'],
+input[type='password'],
+input[type='url'],
+input[type='email'],
+input[type='date'],
+input[type='search'],
 select,
 textarea {
+    background: transparent;
+    border: 1px solid $m3-outline;
+    border-radius: 4px;
+    color: $m3-on-surface;
+    min-height: 2.5rem;
+    transition: background-color 150ms ease, border-color 150ms ease,
+        box-shadow 150ms ease;
+
     &::placeholder {
-        color: $grey-50;
+        color: $m3-on-surface-variant;
         opacity: 1;
+    }
+
+    &:hover {
+        background: rgba($m3-on-surface, .04);
+        border-color: $m3-on-surface;
+    }
+
+    &:focus {
+        background: rgba($m3-primary, .04);
+        border: 2px solid $m3-primary;
+        box-shadow: none;
     }
 }
 
-// Keep native controls consistent with the rest of the dark interface.
 input[type="date"],
 input[type="datetime-local"],
 input[type="time"] {
     color-scheme: dark;
+}
+
+// Filled, tonal and icon buttons use Material 3 shapes and state layers.
+.btn-big,
+.btn-small,
+.btn-icon,
+.button,
+.button-primary,
+.icon-button-primary {
+    border-radius: 999px;
+    min-height: 2.5rem;
+    transition: background-color 150ms ease, box-shadow 150ms ease,
+        color 150ms ease;
+}
+
+.btn-big,
+.btn-small[variant='primary'],
+.btn-icon[variant='primary'],
+.button-primary,
+.icon-button-primary {
+    background: $m3-primary;
+    color: $m3-on-primary;
+
+    span,
+    tg-svg {
+        color: inherit;
+        fill: currentColor;
+    }
+
+    &:hover {
+        background: mix($m3-primary, $m3-on-primary, 88%);
+        box-shadow: 0 1px 3px rgba($black, .45);
+        color: $m3-on-primary;
+    }
+}
+
+.btn-small[variant='secondary'],
+.btn-icon[variant='secondary'],
+.btn-filter,
+.filter-button,
+.button-secondary {
+    background: $m3-secondary-container;
+    color: $m3-on-secondary-container;
+
+    &:hover,
+    &.active {
+        background: mix($m3-secondary-container, $m3-on-secondary-container, 88%);
+        color: $m3-on-secondary-container;
+    }
+}
+
+.btn-link,
+.btn-form,
+.btn-board {
+    border-radius: 999px;
+}
+
+// Cards and detail panes use tonal elevation instead of inverted white slabs.
+.card {
+    background: $m3-surface-container-low;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    box-shadow: 0 1px 2px rgba($black, .45), 0 2px 6px rgba($black, .2);
+    transition: background-color 180ms ease, border-color 180ms ease,
+        box-shadow 180ms ease, transform 180ms ease;
+
+    &:hover {
+        background: $m3-surface-container;
+        border-color: $m3-outline-variant;
+        box-shadow: 0 2px 4px rgba($black, .5), 0 6px 14px rgba($black, .24);
+        transform: translateY(-1px);
+    }
+}
+
+.card-inner {
+    background: transparent;
+    border-radius: 12px;
+}
+
+.card-data .card-estimation,
+.card-statistics .card-completed-tasks,
+.card-assigned-to .extra-assigned,
+.card-tasks ul {
+    background: $m3-surface-container-high;
+}
+
+.detail {
+    background: $m3-background;
+
+    .detail-header-container,
+    .detail-content {
+        background: $m3-surface-container-low;
+        border: 1px solid $m3-outline-variant;
+        border-radius: 12px;
+        box-shadow: 0 1px 2px rgba($black, .35);
+    }
+
+    .detail-header-container {
+        margin: 0 0 .75rem;
+    }
+}
+
+.menu-secondary,
+.menu-secondary li,
+.menu-tertiary {
+    background: $m3-surface-container-low;
+}
+
+// Menus and popovers sit one tonal level above their parent surface.
+.popover,
+.card-option-popup,
+.dropdown-user-profile,
+.dropdown-project-list,
+.tags-dropdown {
+    background: $m3-surface-container;
+    border: 1px solid $m3-outline-variant;
+    border-radius: 8px;
+    box-shadow: 0 3px 8px rgba($black, .5), 0 8px 24px rgba($black, .28);
+    color: $m3-on-surface;
+}
+
+.add-tag-input {
+    .tags-dropdown {
+        border-top: 1px solid $m3-outline-variant;
+        padding: .25rem;
+        top: 2.5rem;
+        width: 14rem;
+    }
+
+    .tags-dropdown-option {
+        align-items: center;
+        border-radius: 4px;
+        min-height: 2.5rem;
+        padding: .5rem .75rem;
+    }
+
+    li:hover,
+    li.selected {
+        background: rgba($m3-primary, .12);
+        color: $m3-on-surface;
+    }
+
+    .tags-dropdown-color {
+        border: 1px solid $m3-outline;
+        border-radius: 50%;
+    }
+}
+
+.lightbox {
+    background: rgba($m3-surface-container-lowest, .92);
+    backdrop-filter: blur(6px);
+}
+
+hr {
+    border-color: $m3-outline-variant;
+}
+
+* {
+    scrollbar-color: $m3-outline $m3-surface-container-low;
 }

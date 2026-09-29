@@ -35,6 +35,11 @@ class TagLineCommonController
     displayTagInput: () ->
         @.addTag = true
 
+    closeTagInput: () ->
+        @.addTag = false
+        @.newTag.name = ""
+        @.newTag.color = null
+
     hasTag: (name) ->
         normalizedName = trim(name).toLowerCase()
 
@@ -54,9 +59,6 @@ class TagLineCommonController
     addNewTag: (name, color) ->
         name = trim(name)
 
-        @.newTag.name = ""
-        @.newTag.color = null
-
         return if not name.length || @.hasTag(name)
 
         if @.disableColorSelection
@@ -65,6 +67,8 @@ class TagLineCommonController
             if @.project.tags_colors[name]
                 color = @.project.tags_colors[name]
             @.onAddTag({name: name, color: color})
+
+        @.closeTagInput()
 
     selectColor: (color) ->
         @.newTag.color = color

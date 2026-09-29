@@ -1,108 +1,131 @@
-// PressF dark theme. Keep this file declaration-only: Taiga prepends it to every
-// component stylesheet during the theme build.
+// PressF Material 3 dark theme. Keep this file declaration-only: Taiga
+// prepends it to every component stylesheet during the theme build.
 
-// Brand
-$primary: #5eead4;
-$primary-75: #44c7b7;
-$primary-50: #329d92;
-$primary-25: #1f5f59;
-$primary-10: #153d3a;
+// Material 3 baseline dark color roles
+$m3-primary: #d0bcff;
+$m3-on-primary: #381e72;
+$m3-primary-container: #4f378b;
+$m3-on-primary-container: #eaddff;
+$m3-secondary: #ccc2dc;
+$m3-on-secondary: #332d41;
+$m3-secondary-container: #4a4458;
+$m3-on-secondary-container: #e8def8;
+$m3-tertiary: #efb8c8;
+$m3-on-tertiary: #492532;
+$m3-error: #f2b8b5;
+$m3-error-container: #8c1d18;
+$m3-background: #141218;
+$m3-surface: #141218;
+$m3-surface-container-lowest: #0f0d13;
+$m3-surface-container-low: #1d1b20;
+$m3-surface-container: #211f26;
+$m3-surface-container-high: #2b2930;
+$m3-surface-container-highest: #36343b;
+$m3-on-surface: #e6e0e9;
+$m3-on-surface-variant: #cac4d0;
+$m3-outline: #938f99;
+$m3-outline-variant: #49454f;
 
-$secondary: #a3e635;
-$secondary-75: #84cc16;
-$secondary-50: #65a30d;
-$secondary-25: #365314;
+// Legacy Taiga palette mapped to Material surface and content roles.
+$primary: $m3-primary;
+$primary-75: #b69df8;
+$primary-50: #9a82db;
+$primary-25: $m3-primary-container;
+$primary-10: #332d41;
 
-$tertiary: #64748b;
+$secondary: $m3-secondary;
+$secondary-75: #b0a6c0;
+$secondary-50: #938b9e;
+$secondary-25: $m3-secondary-container;
 
-$red: #fb7185;
-$red-25: #e11d48;
-$red-10: #4c1722;
+$tertiary: $m3-tertiary;
 
-// The aliases below are used throughout the legacy UI. Reversing the neutral
-// scale gives existing components a dark surface without per-screen patches.
-$grey-02: #0f1117;
-$grey-05: #151923;
-$grey-10: #202634;
-$grey-20: #30394a;
-$grey-30: #475569;
-$grey-40: #64748b;
-$grey-50: #94a3b8;
-$grey-60: #b6c2d2;
-$grey-70: #cbd5e1;
-$grey-80: #e2e8f0;
-$grey-90: #f8fafc;
+$red: $m3-error;
+$red-25: #ff897d;
+$red-10: $m3-error-container;
+
+$grey-02: $m3-background;
+$grey-05: $m3-surface-container-low;
+$grey-10: $m3-surface-container;
+$grey-20: $m3-surface-container-high;
+$grey-30: $m3-surface-container-highest;
+$grey-40: $m3-outline-variant;
+$grey-50: #79747e;
+$grey-60: $m3-outline;
+$grey-70: $m3-on-surface-variant;
+$grey-80: $m3-on-surface;
+$grey-90: #f7f2fa;
 
 $black: #000;
-$blackish: $grey-90;
-$grayer: $grey-70;
-$gray: $grey-60;
-$gray-light: $grey-50;
-$gray-lighter: $grey-30;
-$whitish: $grey-10;
-$mass-white: $grey-05;
-$white: #151923;
+$blackish: $m3-on-surface;
+$grayer: $m3-on-surface-variant;
+$gray: $m3-outline;
+$gray-light: #79747e;
+$gray-lighter: $m3-surface-container-highest;
+$whitish: $m3-surface-container;
+$mass-white: $m3-background;
+$white: $m3-surface-container-low;
 
-$primary-light: $primary-75;
-$primary-lighter: $primary-10;
-$primary-dark: $primary-50;
-$primary-background: $primary-25;
+$primary-light: $m3-primary;
+$primary-lighter: $m3-primary-container;
+$primary-dark: #b69df8;
+$primary-background: $m3-primary-container;
 
-$secondary-light: $secondary-50;
-$secondary-dark: #84cc16;
+$secondary-light: $m3-secondary;
+$secondary-dark: #b0a6c0;
 
-$green-light: #29452f;
-$red-light: #4c1722;
-$my-sin: #f59e0b;
-$yellow-green: #84cc16;
+$green-light: #244c3c;
+$red-light: $m3-error-container;
+$my-sin: #ffb95f;
+$yellow-green: #b8d982;
 
-$card: #202634;
-$card-hover: #293244;
-$card-dark: #111827;
+$card: $m3-surface-container-low;
+$card-hover: $m3-surface-container;
+$card-dark: $m3-surface-container-lowest;
 
-$tribe-primary: #22d3ee;
-$tribe-secondary: #0891b2;
+$tribe-primary: #7dd5f4;
+$tribe-secondary: #3f6370;
 
-$top-icon-color: #d8fff8;
-$dropdown-color: #111827;
-$code-bg: #090b10;
-$highlight: #3f4d18;
+$top-icon-color: $m3-on-primary-container;
+$dropdown-color: $m3-surface-container;
+$code-bg: $m3-surface-container-lowest;
+$highlight: #504b22;
 
 // Taiga 6 palette
-$color-solid-primary: #5eead4;
-$color-link-primary: #67e8f9;
-$color-link-tertiary: #a5b4fc;
+$color-solid-primary: $m3-primary;
+$color-link-primary: $m3-primary;
+$color-link-tertiary: $m3-on-surface-variant;
 
-$color-gray100: #0f1117;
-$color-gray200: #151923;
-$color-gray300: #202634;
-$color-gray400: #30394a;
-$color-gray800: #cbd5e1;
+$color-gray100: $m3-background;
+$color-gray200: $m3-surface-container-low;
+$color-gray300: $m3-surface-container;
+$color-gray400: $m3-outline-variant;
+$color-gray800: $m3-on-surface-variant;
 
-$color-black600: #94a3b8;
-$color-black700: #b6c2d2;
-$color-black800: #e2e8f0;
-$color-black900: #f8fafc;
+$color-black600: $m3-on-surface-variant;
+$color-black700: $m3-on-surface-variant;
+$color-black800: $m3-on-surface;
+$color-black900: $m3-on-surface;
 
-$color-link-red: #fb7185;
-$color-link-orange: #fb923c;
-$color-link-yellow: #facc15;
-$color-link-green: #a3e635;
-$color-link-purple: #d8b4fe;
+$color-link-red: $m3-error;
+$color-link-orange: #ffb59b;
+$color-link-yellow: #dec66d;
+$color-link-green: #a8d5a2;
+$color-link-purple: $m3-primary;
 
-$color-solid-red: rgba($color-link-red, .25);
-$color-solid-orange: rgba($color-link-orange, .25);
-$color-solid-yellow: rgba($color-link-yellow, .25);
-$color-solid-green: rgba($color-link-green, .25);
-$color-solid-purple: rgba($color-link-purple, .25);
+$color-solid-red: rgba($m3-error, .18);
+$color-solid-orange: rgba($color-link-orange, .18);
+$color-solid-yellow: rgba($color-link-yellow, .18);
+$color-solid-green: rgba($color-link-green, .18);
+$color-solid-purple: rgba($m3-primary, .18);
 
-$color-white: #151923;
-$color-black: #f8fafc;
+$color-white: $m3-surface-container-low;
+$color-black: $m3-on-surface;
 
-$default-tags: #64748b;
+$default-tags: $m3-outline;
 
-$loading-color-1: #a3e635;
-$loading-color-2: #facc15;
-$loading-color-3: #fb923c;
-$loading-color-4: #fb7185;
-$loading-color-5: #818cf8;
+$loading-color-1: $m3-primary;
+$loading-color-2: $m3-secondary;
+$loading-color-3: $m3-tertiary;
+$loading-color-4: $m3-error;
+$loading-color-5: #7dd5f4;
