@@ -20,7 +20,9 @@ COPY docker/conf.json.template /usr/share/nginx/html/conf.json.template
 COPY docker/config_env_subst.sh /docker-entrypoint.d/30_config_env_subst.sh
 COPY --from=build /src/dist/ /usr/share/nginx/html/
 
-RUN chmod +x /docker-entrypoint.d/30_config_env_subst.sh
+RUN apk add --no-cache bash \
+    && sed -i 's/\r$//' /docker-entrypoint.d/30_config_env_subst.sh \
+    && chmod +x /docker-entrypoint.d/30_config_env_subst.sh
 
 EXPOSE 80
 
