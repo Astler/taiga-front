@@ -316,6 +316,222 @@ input[type="time"] {
     padding: .5rem;
 }
 
+// Material 3 navigation drawer. Keep Taiga's 200/48px open and collapsed
+// widths so the existing layout and collapse animation continue to work.
+tg-project-menu {
+    background: $m3-surface-container-low;
+    border-right: 1px solid $m3-outline-variant;
+}
+
+tg-project-menu tg-project-navigation:not(.pressf-selector-guard) {
+    background: $m3-surface-container-low;
+    color: $m3-on-surface;
+
+    .nav-wrapper.nav-wrapper {
+        background: $m3-surface-container-low;
+        scrollbar-width: thin;
+    }
+
+    .nav-wrapper .nav-inner {
+        background: $m3-surface-container-low;
+        padding: .5rem .375rem .375rem;
+    }
+
+    .nav-wrapper .nav-inner h1 {
+        background: transparent;
+        margin: 0 0 .5rem;
+        padding: 0;
+
+        .project-link {
+            border-radius: 12px;
+            color: $m3-on-surface;
+            gap: .75rem;
+            min-height: 3.5rem;
+            padding: .5rem;
+            transition: background-color 120ms ease;
+
+            &:hover {
+                background: rgba($m3-on-surface, .08);
+                color: $m3-on-surface;
+            }
+
+            .project-name {
+                font-weight: 700;
+                line-height: 1.25rem;
+            }
+        }
+
+        img {
+            border-radius: 8px;
+            flex: 0 0 2rem;
+            height: 2rem;
+            margin: 0;
+            width: 2rem;
+        }
+    }
+
+    .nav-wrapper .nav-inner .main-menu {
+        padding: 0;
+
+        .menu-option {
+            margin: 0 0 .25rem;
+
+            > a,
+            > button {
+                border-radius: 999px;
+                color: $m3-on-surface-variant;
+                font-weight: 400;
+                height: 3rem;
+                padding: 0 .75rem;
+                transition: background-color 120ms ease, color 120ms ease;
+
+                > svg {
+                    fill: $m3-on-surface-variant;
+                    flex: 0 0 1.5rem;
+                    margin: 0 .75rem 0 0;
+                }
+
+                &:hover {
+                    background: rgba($m3-on-surface, .08);
+                    color: $m3-on-surface;
+                    font-weight: 400;
+
+                    > svg {
+                        fill: $m3-on-surface;
+                    }
+                }
+            }
+
+            &.active,
+            &.active-dialog {
+                > a,
+                > button {
+                    background: $m3-secondary-container;
+                    color: $m3-on-secondary-container;
+                    font-weight: 700;
+
+                    > svg {
+                        fill: $m3-on-secondary-container;
+                    }
+                }
+            }
+        }
+    }
+
+    .nav-wrapper .nav-inner .main-menu .scrum {
+        .agile-chevron {
+            fill: currentColor;
+            margin-left: auto;
+        }
+
+        .child-menu {
+            background: transparent;
+            margin: .125rem 0 .375rem;
+            padding: 0;
+
+            .menu-option {
+                margin: 0 0 .125rem;
+            }
+
+            a {
+                border-radius: 999px;
+                color: $m3-on-surface-variant;
+                min-height: 2.5rem;
+                padding: 0 .75rem 0 3rem;
+
+                &.active,
+                &:hover {
+                    background: rgba($m3-primary, .12);
+                    color: $m3-primary;
+                }
+            }
+        }
+    }
+
+    .nav-wrapper .nav-inner .menu-secondary {
+        background: transparent;
+        border: 0;
+        border-top: 1px solid $m3-outline-variant;
+        margin-top: auto;
+        padding-top: .5rem;
+    }
+
+    .nav-wrapper .nav-inner > .collapse {
+        border-radius: 999px;
+        color: $m3-on-surface-variant;
+        min-height: 2.5rem;
+        padding: .375rem .5rem;
+
+        svg {
+            background: $m3-surface-container-high;
+            fill: $m3-primary;
+            height: 1.75rem;
+            margin-left: .5rem;
+            padding: .375rem;
+            width: 1.75rem;
+        }
+
+        &:hover {
+            background: rgba($m3-on-surface, .08);
+            color: $m3-on-surface;
+            font-weight: 400;
+
+            svg {
+                background: $m3-primary-container;
+                fill: $m3-on-primary-container;
+            }
+        }
+    }
+
+    .nav-wrapper .nav-inner + .dialog {
+        background: $m3-surface-container-high;
+        border: 1px solid $m3-outline-variant;
+        border-radius: 0 12px 12px 0;
+        box-shadow: 0 4px 12px rgba($black, .45), 0 12px 32px rgba($black, .28);
+        overflow: hidden;
+        padding: .25rem;
+
+        .dialog-main,
+        .main-link,
+        .child-menu {
+            background: transparent;
+        }
+
+        .main-link,
+        .child-menu a {
+            border-radius: 8px;
+            color: $m3-on-surface;
+        }
+
+        .main-link:hover,
+        .child-menu a:hover {
+            background: rgba($m3-on-surface, .08);
+            color: $m3-primary;
+        }
+    }
+
+    &.collapsed.collapsed {
+        .nav-inner {
+            padding-left: .25rem;
+            padding-right: .25rem;
+        }
+
+        h1 .project-link,
+        .main-menu .menu-option > a,
+        .main-menu .menu-option > button {
+            justify-content: center;
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
+
+        h1 img,
+        .main-menu .menu-option > a > svg,
+        .main-menu .menu-option > button > svg {
+            margin: 0;
+        }
+    }
+}
+
 // Menus and popovers sit one tonal level above their parent surface.
 .popover,
 .card-option-popup,
