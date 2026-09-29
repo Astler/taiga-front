@@ -1,0 +1,22 @@
+// Theme-wide browser hints and controls that are not driven by Taiga's Sass
+// variables.
+
+:root {
+    color-scheme: dark;
+}
+
+input,
+select,
+textarea {
+    &::placeholder {
+        color: $grey-50;
+        opacity: 1;
+    }
+}
+
+// Keep native controls consistent with the rest of the dark interface.
+input[type="date"],
+input[type="datetime-local"],
+input[type="time"] {
+    color-scheme: dark;
+}

@@ -35,11 +35,29 @@ class TagLineCommonController
     displayTagInput: () ->
         @.addTag = true
 
+    hasTag: (name) ->
+        normalizedName = trim(name).toLowerCase()
+
+        return _.some @.tags, (tag) ->
+            tagName = if _.isArray(tag) then tag[0] else tag
+            trim(tagName).toLowerCase() == normalizedName
+
+    availableTagOptions: () ->
+        query = trim(@.newTag.name).toLowerCase()
+
+        return _.filter @.colorArray, (tag) =>
+            name = tag[0]
+            matchesQuery = !query.length || name.toLowerCase().indexOf(query) != -1
+
+            matchesQuery && !@.hasTag(name)
+
     addNewTag: (name, color) ->
+        name = trim(name)
+
         @.newTag.name = ""
         @.newTag.color = null
 
-        return if not name.length
+        return if not name.length || @.hasTag(name)
 
         if @.disableColorSelection
             @.onAddTag({name: name, color: color}) if name.length

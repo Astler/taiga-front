@@ -1,0 +1,108 @@
+// PressF dark theme. Keep this file declaration-only: Taiga prepends it to every
+// component stylesheet during the theme build.
+
+// Brand
+$primary: #5eead4;
+$primary-75: #44c7b7;
+$primary-50: #329d92;
+$primary-25: #1f5f59;
+$primary-10: #153d3a;
+
+$secondary: #a3e635;
+$secondary-75: #84cc16;
+$secondary-50: #65a30d;
+$secondary-25: #365314;
+
+$tertiary: #64748b;
+
+$red: #fb7185;
+$red-25: #e11d48;
+$red-10: #4c1722;
+
+// The aliases below are used throughout the legacy UI. Reversing the neutral
+// scale gives existing components a dark surface without per-screen patches.
+$grey-02: #0f1117;
+$grey-05: #151923;
+$grey-10: #202634;
+$grey-20: #30394a;
+$grey-30: #475569;
+$grey-40: #64748b;
+$grey-50: #94a3b8;
+$grey-60: #b6c2d2;
+$grey-70: #cbd5e1;
+$grey-80: #e2e8f0;
+$grey-90: #f8fafc;
+
+$black: #000;
+$blackish: $grey-90;
+$grayer: $grey-70;
+$gray: $grey-60;
+$gray-light: $grey-50;
+$gray-lighter: $grey-30;
+$whitish: $grey-10;
+$mass-white: $grey-05;
+$white: #151923;
+
+$primary-light: $primary-75;
+$primary-lighter: $primary-10;
+$primary-dark: $primary-50;
+$primary-background: $primary-25;
+
+$secondary-light: $secondary-50;
+$secondary-dark: #84cc16;
+
+$green-light: #29452f;
+$red-light: #4c1722;
+$my-sin: #f59e0b;
+$yellow-green: #84cc16;
+
+$card: #202634;
+$card-hover: #293244;
+$card-dark: #111827;
+
+$tribe-primary: #22d3ee;
+$tribe-secondary: #0891b2;
+
+$top-icon-color: #d8fff8;
+$dropdown-color: #111827;
+$code-bg: #090b10;
+$highlight: #3f4d18;
+
+// Taiga 6 palette
+$color-solid-primary: #5eead4;
+$color-link-primary: #67e8f9;
+$color-link-tertiary: #a5b4fc;
+
+$color-gray100: #0f1117;
+$color-gray200: #151923;
+$color-gray300: #202634;
+$color-gray400: #30394a;
+$color-gray800: #cbd5e1;
+
+$color-black600: #94a3b8;
+$color-black700: #b6c2d2;
+$color-black800: #e2e8f0;
+$color-black900: #f8fafc;
+
+$color-link-red: #fb7185;
+$color-link-orange: #fb923c;
+$color-link-yellow: #facc15;
+$color-link-green: #a3e635;
+$color-link-purple: #d8b4fe;
+
+$color-solid-red: rgba($color-link-red, .25);
+$color-solid-orange: rgba($color-link-orange, .25);
+$color-solid-yellow: rgba($color-link-yellow, .25);
+$color-solid-green: rgba($color-link-green, .25);
+$color-solid-purple: rgba($color-link-purple, .25);
+
+$color-white: #151923;
+$color-black: #f8fafc;
+
+$default-tags: #64748b;
+
+$loading-color-1: #a3e635;
+$loading-color-2: #facc15;
+$loading-color-3: #fb923c;
+$loading-color-4: #fb7185;
+$loading-color-5: #818cf8;

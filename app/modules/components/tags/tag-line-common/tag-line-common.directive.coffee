@@ -33,8 +33,11 @@ TagLineCommonDirective = () ->
                 event.preventDefault()
 
                 if el.find('.tags-dropdown .selected').length
-                    tagName = $('.tags-dropdown .selected .tags-dropdown-name').text()
+                    tagName = el.find('.tags-dropdown .selected .tags-dropdown-name').text()
                     ctrl.addNewTag(tagName, null)
+                else if !ctrl.newTag.name.length && ctrl.availableTagOptions().length
+                    tag = ctrl.availableTagOptions()[0]
+                    ctrl.addNewTag(tag[0], tag[1])
                 else
                     ctrl.addNewTag(ctrl.newTag.name, ctrl.newTag.color)
 

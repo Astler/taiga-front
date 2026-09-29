@@ -8,7 +8,7 @@
     "debug": ${DEBUG},
     "debugInfo": ${DEBUG},
     "defaultLanguage": "${DEFAULT_LANGUAGE}",
-    "themes": ["taiga"],
+    "themes": ["taiga", "pressf-dark"],
     "defaultTheme": "taiga",
     "defaultLoginEnabled": true,
     "publicRegisterEnabled": ${PUBLIC_REGISTER_ENABLED},

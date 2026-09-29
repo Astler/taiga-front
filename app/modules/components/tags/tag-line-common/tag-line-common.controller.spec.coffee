@@ -64,6 +64,27 @@ describe "TagLineCommon", ->
         TagLineCommonCtrl.displayTagInput()
         expect(TagLineCommonCtrl.addTag).to.be.true
 
+    it "filters available tags by query and selected tags", () ->
+        TagLineCommonCtrl.tags = [["frontend", "#fff"]]
+        TagLineCommonCtrl.colorArray = [
+            ["frontend", "#fff"]
+            ["backend", "#000"]
+            ["bug", "#f00"]
+        ]
+        TagLineCommonCtrl.newTag.name = "end"
+
+        expect(TagLineCommonCtrl.availableTagOptions()).to.be.eql([
+            ["backend", "#000"]
+        ])
+
+    it "does not add an already selected tag", () ->
+        TagLineCommonCtrl.tags = [["frontend", "#fff"]]
+        TagLineCommonCtrl.onAddTag = sinon.spy()
+
+        TagLineCommonCtrl.addNewTag(" Frontend ", null)
+
+        expect(TagLineCommonCtrl.onAddTag).to.not.have.been.called
+
     it "on add tag", () ->
         TagLineCommonCtrl.loadingAddTag = true
         tag = 'tag1'

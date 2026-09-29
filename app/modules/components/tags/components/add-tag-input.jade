@@ -20,8 +20,8 @@
 
     tg-tags-dropdown(
         ng-if="!vm.disableColorSelection"
-        ng-show="vm.newTag.name.length",
-        color-array="vm.colorArray",
+        ng-show="vm.availableTagOptions().length",
+        color-array="vm.availableTagOptions()",
         tag="vm.newTag",
         on-select-tag="vm.addNewTag(name, color)"
     )
