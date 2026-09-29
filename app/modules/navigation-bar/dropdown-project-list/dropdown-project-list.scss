@@ -14,15 +14,45 @@
         padding-bottom: .8rem;
     }
 
+    .dropdown-project-list-section + .dropdown-project-list-section {
+        margin-top: .75rem;
+    }
+
+    .dropdown-project-list-heading {
+        @include font-size(xsmall);
+        @include font-type(medium);
+
+        color: $color-link-tertiary;
+        letter-spacing: .04em;
+        margin: 0;
+        padding: .4rem .5rem;
+        text-transform: uppercase;
+    }
+
+    .dropdown-project-list-row {
+        align-items: center;
+        display: flex;
+        min-width: 0;
+    }
+
     .dropdown-project-list-link {
         @include font-type(medium);
 
         align-items: center;
         display: flex;
+        flex: 1;
+        min-width: 0;
 
         img {
+            flex-shrink: 0;
             margin-right: .5rem;
             width: 24px;
+        }
+
+        span {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
         &:hover,
@@ -32,8 +62,45 @@
         }
     }
 
+    .dropdown-project-pin {
+        align-items: center;
+        appearance: none;
+        background: transparent;
+        border-radius: 50%;
+        color: $color-link-tertiary;
+        cursor: pointer;
+        display: flex;
+        flex: 0 0 2rem;
+        height: 2rem;
+        justify-content: center;
+        padding: 0;
+
+        tg-svg,
+        svg {
+            @include svg-size(1rem);
+            fill: transparent;
+            stroke: currentColor;
+        }
+
+        &:hover {
+            background: $color-gray300;
+            color: $color-link-primary;
+        }
+
+        &[aria-pressed='true'] {
+            color: $color-link-primary;
+
+            tg-svg,
+            svg {
+                fill: currentColor;
+            }
+        }
+    }
+
     .navbar-dropdown {
         @include arrow('bottom', $color-gray100, $color-gray100, 1, 8, 1.5rem);
+        max-height: 70vh;
+        overflow-y: auto;
         width: 275px;
     }
 

@@ -213,6 +213,101 @@ input[type="time"] {
     background: $m3-surface-container-low;
 }
 
+// Material 3 top app bar: consistent touch targets and quieter state layers.
+.navbar {
+    background: $m3-surface-container;
+    border-bottom: 1px solid $m3-outline-variant;
+    box-shadow: 0 1px 3px rgba($black, .28);
+
+    .nav-left .logo {
+        align-items: center;
+        display: flex;
+        height: 100%;
+        justify-content: center;
+        padding: 0;
+        width: 3rem;
+
+        svg {
+            fill: $m3-on-surface-variant;
+        }
+
+        &:hover {
+            background: rgba($m3-on-surface, .08);
+        }
+    }
+
+    .nav-right {
+        gap: .125rem;
+        padding-inline-end: .5rem;
+    }
+
+    .nav-right > a,
+    .nav-right > .topnav-dropdown-wrapper > a {
+        align-items: center;
+        border-radius: 50%;
+        display: flex;
+        height: 2.5rem;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+        width: 2.5rem;
+
+        &:hover,
+        &.active {
+            background: rgba($m3-primary, .12);
+        }
+
+        svg {
+            fill: $m3-on-surface-variant;
+            margin: 0;
+        }
+    }
+
+    [tg-dropdown-user] {
+        border-left: 1px solid $m3-outline-variant;
+        margin-left: .5rem;
+        padding: 0 .5rem 0 .75rem;
+    }
+
+    .user-avatar {
+        padding-left: 0;
+
+        img {
+            border: 2px solid $m3-primary;
+        }
+    }
+}
+
+.navbar .dropdown-project-list-projects {
+    border-radius: 8px;
+    min-height: 2.5rem;
+    padding: 0 .75rem;
+
+    &:hover {
+        background: rgba($m3-primary, .12);
+    }
+}
+
+.navbar .dropdown-project-list.active .dropdown-project-list-projects {
+    background: rgba($m3-primary, .12);
+}
+
+.dropdown-project-list .navbar-dropdown {
+    padding: .5rem;
+    width: 20rem;
+}
+
+.dropdown-project-list .dropdown-project-list-ul {
+    border-bottom-color: $m3-outline-variant;
+    padding-bottom: .5rem;
+}
+
+.dropdown-project-list .dropdown-project-list-link {
+    border-radius: 6px;
+    min-height: 2.75rem;
+    padding: .5rem;
+}
+
 // Menus and popovers sit one tonal level above their parent surface.
 .popover,
 .card-option-popup,

@@ -19,27 +19,67 @@
 
         span {{'PROJECT.NAVIGATION.PROJECTS' | translate}}
 
-        div.empty-projects(ng-if="vm.projects.size === 0")
+        div.empty-projects(ng-if="!vm.hasProjects")
 
     div.navbar-dropdown
-        div(ng-if="vm.projects.size")
-            ul.dropdown-project-list-ul
-                li(tg-repeat="project in vm.projects track by project.get('id')")
-                    a.dropdown-project-list-link.secondary(
-                        href="#"
-                        tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
-                        ng-class="{'blocked-project': project.get('blocked_code'), 'active': vm.currentProject == project.get('id')}"
-                    )
-                        img(
-                            tg-project-logo-small-src="::project"
-                            alt="{{::project.get('name')}}"
-                        )
-                        span {{::project.get("name")}}
-                        tg-svg(
-                            svg-icon="icon-slash"
-                            ng-if="project.get('blocked_code')"
-                            svg-title="PROJECT.BLOCKED_PROJECT.BLOCKED"
-                        )
+        div(ng-if="vm.hasProjects")
+            .dropdown-project-list-section(ng-if="vm.pinnedProjects.size")
+                h3.dropdown-project-list-heading Pinned
+                ul.dropdown-project-list-ul.dropdown-project-list-pinned
+                    li(tg-repeat="project in vm.pinnedProjects track by project.get('id')")
+                        .dropdown-project-list-row
+                            a.dropdown-project-list-link.secondary(
+                                href="#"
+                                tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
+                                ng-class="{'blocked-project': project.get('blocked_code'), 'active': vm.currentProject == project.get('id')}"
+                            )
+                                img(
+                                    tg-project-logo-small-src="::project"
+                                    alt="{{::project.get('name')}}"
+                                )
+                                span {{::project.get("name")}}
+                                tg-svg(
+                                    svg-icon="icon-slash"
+                                    ng-if="project.get('blocked_code')"
+                                    svg-title="PROJECT.BLOCKED_PROJECT.BLOCKED"
+                                )
+                            button.dropdown-project-pin(
+                                type="button"
+                                ng-click="vm.togglePinned(project, $event)"
+                                ng-attr-aria-label="Unpin {{::project.get('name')}}"
+                                aria-pressed="true"
+                                title="Unpin project"
+                            )
+                                tg-svg(svg-icon="icon-star")
+
+            .dropdown-project-list-section(ng-if="vm.projects.size")
+                h3.dropdown-project-list-heading Projects
+                ul.dropdown-project-list-ul
+                    li(tg-repeat="project in vm.projects track by project.get('id')")
+                        .dropdown-project-list-row
+                            a.dropdown-project-list-link.secondary(
+                                href="#"
+                                tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
+                                ng-class="{'blocked-project': project.get('blocked_code'), 'active': vm.currentProject == project.get('id')}"
+                            )
+                                img(
+                                    tg-project-logo-small-src="::project"
+                                    alt="{{::project.get('name')}}"
+                                )
+                                span {{::project.get("name")}}
+                                tg-svg(
+                                    svg-icon="icon-slash"
+                                    ng-if="project.get('blocked_code')"
+                                    svg-title="PROJECT.BLOCKED_PROJECT.BLOCKED"
+                                )
+                            button.dropdown-project-pin(
+                                type="button"
+                                ng-click="vm.togglePinned(project, $event)"
+                                ng-attr-aria-label="Pin {{::project.get('name')}}"
+                                aria-pressed="false"
+                                title="Pin project"
+                            )
+                                tg-svg(svg-icon="icon-star")
 
             a.see-more-projects-btn(
                 href="#",
@@ -55,7 +95,7 @@
                 )
                     tg-svg(svg-icon="icon-plus-1")
                     span {{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}
-        div(ng-if="!vm.projects.size")
+        div(ng-if="!vm.hasProjects")
             h2 {{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT_FIRST' | translate}}
             p.dropdown-project-list-desc {{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT_FIRST_TEXT' | translate}}
             div.create-options

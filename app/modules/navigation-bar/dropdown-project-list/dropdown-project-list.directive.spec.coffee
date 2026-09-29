@@ -13,6 +13,11 @@ describe "dropdownProjectListDirective", () ->
     recents = []
 
     projects = Immutable.fromJS({
+        all: [
+            {id: 1},
+            {id: 2},
+            {id: 3}
+        ]
         recents: [
             {id: 1},
             {id: 2},
@@ -47,11 +52,20 @@ describe "dropdownProjectListDirective", () ->
         }
         provide.value "tgCurrentUserService", mocks.currentUserService
 
+    _mockPinnedProjectsService = () ->
+        mocks.pinnedProjectsService = {
+            load: sinon.stub().returns({then: (callback) -> callback([])})
+            isPinned: sinon.stub().returns(false)
+            toggle: sinon.stub()
+        }
+        provide.value "tgPinnedProjectsService", mocks.pinnedProjectsService
+
     _mocks = () ->
         module ($provide) ->
             provide = $provide
             _mockTgProjectsService()
             _mockTgCurrentUserService()
+            _mockPinnedProjectsService()
             _mockTranslateFilter()
             _mockTgProjectService()
 
