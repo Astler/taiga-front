@@ -77,6 +77,11 @@ div.wrapper.issues.lightbox-generic-form(
                             ng-click="ctrl.addIssuesInBulk()"
                         )
                             tg-svg(svg-icon="icon-bulk")
+
+                tg-active-filter-chips(
+                    filters="ctrl.selectedFilters"
+                    on-remove="ctrl.removeFilter(filter)"
+                )
         .issue-container
             sidebar.filters-bar(
                 ng-if="ctrl.openFilter"

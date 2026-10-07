@@ -1,0 +1,25 @@
+// Taiga Elements is shipped as a prebuilt bundle and owns a second set of
+// CSS custom properties. Bridge those roles to the active M3 theme so web
+// components and legacy SCSS share one palette.
+:root,
+tg-legacy-loader,
+tg-project-menu tg-project-navigation:not(.pressf-selector-guard) {
+    --color-solid-primary: #{$m3-primary};
+    --color-link-primary: #{$m3-primary};
+    --color-link-tertiary: #{$m3-on-surface-variant};
+    --color-gray100: #{$m3-background};
+    --color-gray200: #{$m3-surface-container-low};
+    --color-gray300: #{$m3-surface-container};
+    --color-gray400: #{$m3-outline-variant};
+    --color-black600: #{$m3-on-surface-variant};
+    --color-black700: #{$m3-surface-container-high};
+    --color-black800: #{$m3-surface-container-low};
+    --color-black900: #{$m3-surface-container-lowest};
+    --color-black: #{$m3-outline-variant};
+    --color-white: #{$m3-on-surface};
+    --color-link-red: #{$m3-error};
+    --color-link-orange: #{$color-link-orange};
+    --color-link-yellow: #{$color-link-yellow};
+    --color-link-green: #{$color-link-green};
+    --color-link-purple: #{$m3-primary};
+}

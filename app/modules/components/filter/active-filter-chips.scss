@@ -1,0 +1,68 @@
+tg-active-filter-chips {
+    display: block;
+    min-width: 0;
+}
+
+.active-filter-chips {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .375rem;
+    min-height: 2.5rem;
+    padding: .375rem 0;
+}
+
+.active-filter-chip {
+    align-items: center;
+    background: $color-gray200;
+    border: 1px solid $color-gray400;
+    border-radius: 999px;
+    color: $color-black900;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: .75rem;
+    gap: .375rem;
+    height: 2rem;
+    max-width: 16rem;
+    padding: 0 .625rem;
+
+    &:hover {
+        background: $color-gray300;
+        border-color: $color-link-primary;
+    }
+
+    &.is-excluded {
+        border-color: $color-link-red;
+    }
+
+    .active-filter-chip-mode {
+        color: $color-link-primary;
+        font-weight: 700;
+    }
+
+    &.is-excluded .active-filter-chip-mode {
+        color: $color-link-red;
+    }
+
+    .active-filter-chip-swatch {
+        border: 1px solid currentColor;
+        border-radius: 50%;
+        flex: 0 0 .625rem;
+        height: .625rem;
+        width: .625rem;
+    }
+
+    .active-filter-chip-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    tg-svg,
+    svg {
+        fill: currentColor;
+        flex: 0 0 .875rem;
+        height: .875rem;
+        width: .875rem;
+    }
+}

@@ -21,9 +21,9 @@ ProjectMenuDirective = (projectService, lightboxFactory) ->
         ), projectChange
 
         fixed = false
-        topBarHeight = 48
-
-        window.addEventListener "scroll", () ->
+        onScroll = () ->
+            navbar = document.querySelector(".navbar")
+            topBarHeight = navbar?.offsetHeight or 48
             position = $(window).scrollTop()
 
             if position > topBarHeight && fixed == false
@@ -32,6 +32,11 @@ ProjectMenuDirective = (projectService, lightboxFactory) ->
             else if position == 0 && fixed == true
                 el.find('.sticky-project-menu').removeClass('unblock')
                 fixed = false
+
+        window.addEventListener "scroll", onScroll
+
+        scope.$on "$destroy", () ->
+            window.removeEventListener "scroll", onScroll
 
     return {
         scope: {},

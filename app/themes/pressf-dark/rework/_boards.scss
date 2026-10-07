@@ -1,0 +1,144 @@
+// Board hierarchy: a quiet canvas, tonal columns and elevated work items.
+.kanban-manager,
+.taskboard-manager {
+    column-gap: var(--pf-space-4);
+    row-gap: var(--pf-space-4);
+}
+
+.kanban-table-header {
+    background: $m3-background;
+
+    .task-colum-name {
+        background: $m3-surface-container-high;
+        border: 1px solid $m3-outline-variant;
+        border-radius: var(--pf-radius-medium);
+        color: $m3-on-surface-variant;
+
+        .title .name {
+            color: $m3-on-surface;
+        }
+
+        .btn-board {
+            align-items: center;
+            border-radius: 50%;
+            display: flex;
+            height: 2rem;
+            justify-content: center;
+            min-height: 2rem;
+            padding: 0;
+            width: 2rem;
+
+            &:hover {
+                background: rgba($m3-on-surface, .08);
+            }
+        }
+    }
+}
+
+.kanban-table-body {
+    .taskboard-column {
+        background: $m3-surface-container-lowest;
+        border: 1px solid rgba($m3-outline-variant, .6);
+        border-radius: var(--pf-radius-medium);
+    }
+
+    .kanban-uses-box {
+        background: $m3-surface-container-lowest;
+    }
+}
+
+.kanban-table .card,
+.taskboard .card {
+    border: 1px solid rgba($m3-outline-variant, .65);
+    border-radius: var(--pf-radius-medium);
+    box-shadow: 0 1px 2px rgba($black, .5), 0 2px 8px rgba($black, .18);
+
+    &:hover {
+        border-color: $m3-outline;
+        box-shadow: 0 2px 4px rgba($black, .48), 0 8px 20px rgba($black, .24);
+    }
+}
+
+.kanban-table .card-inner,
+.taskboard .card-inner {
+    border-radius: var(--pf-radius-medium);
+}
+
+.card-inner.zoom-3 .card-tags .card-tag {
+    border-radius: 6px;
+    min-height: 1.25rem;
+    padding: .125rem .375rem;
+}
+
+@media screen and (max-width: 1100px) {
+    :root {
+        --pf-drawer-width: 17rem;
+    }
+
+    .kanban,
+    .taskboard,
+    .issue-main,
+    .scrum {
+        padding: var(--pf-space-4);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .kanban,
+    .taskboard,
+    .issue-main,
+    .scrum {
+        padding: var(--pf-space-3);
+    }
+
+    .kanban-manager,
+    .taskboard-manager {
+        display: block;
+        position: relative;
+    }
+
+    .kanban-filter,
+    .taskboard-filter {
+        bottom: 0;
+        height: 100%;
+        left: 0;
+        margin: 0;
+        max-height: 100%;
+        max-width: var(--pf-drawer-width);
+        position: absolute;
+        top: 0;
+        width: calc(100vw - 4rem);
+        z-index: $layout-floating-layer;
+    }
+
+    .backlog-filter,
+    .issue-container .filters-bar {
+        margin-bottom: var(--pf-space-3);
+        max-height: 55vh;
+        position: relative;
+        top: auto;
+        width: 100%;
+    }
+
+    .issue-container {
+        display: block;
+    }
+
+    .taskboard-actions,
+    .backlog-table-options {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .kanban-table-options-start,
+    .taskboard-table-options-start,
+    .issue-table-options-start,
+    .backlog-table-options-start {
+        flex-wrap: wrap;
+
+        tg-input-search {
+            max-width: 22rem;
+            width: 100%;
+        }
+    }
+}

@@ -79,7 +79,8 @@ $dropdown-width: 260px;
         }
         .active,
         > a:hover,
-        > .topnav-dropdown-wrapper:hover > a {
+        > .topnav-dropdown-wrapper:hover > a,
+        > .topnav-dropdown-wrapper:focus-within > a {
             svg {
                 fill: $color-link-tertiary;
             }
@@ -95,7 +96,8 @@ $dropdown-width: 260px;
                 fill: $color-link-primary;
             }
 
-            &:hover svg {
+            &:hover svg,
+            &:focus-within svg {
                 fill: $color-link-tertiary;
             }
         }
@@ -112,7 +114,8 @@ $dropdown-width: 260px;
         margin-left: 1rem;
         padding: 0 1rem 0 .5rem;
 
-        &:hover {
+        &:hover,
+        &:focus-within {
             .navbar-dropdown {
                 animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) both;
                 display: block;
@@ -209,7 +212,8 @@ $dropdown-width: 260px;
     }
     .topnav-dropdown-wrapper {
         position: relative;
-        &:hover {
+        &:hover,
+        &:focus-within {
             .navbar-dropdown {
                 animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) both;
                 display: block;
@@ -324,7 +328,8 @@ $dropdown-width: 260px;
 .topnav-dropdown-wrapper {
     height: 100%;
     position: relative;
-    &:hover {
+    &:hover,
+    &:focus-within {
         .navbar-dropdown-notifications {
             animation: dropdownFade .2s cubic-bezier(.09, 0, .99, .01) both;
             display: block;

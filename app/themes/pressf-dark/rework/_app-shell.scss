@@ -1,0 +1,82 @@
+// Page-level surfaces and headers. This intentionally leaves Taiga's layout
+// dimensions intact while establishing a consistent application shell.
+.kanban,
+.taskboard,
+.issue-main,
+.scrum {
+    padding: var(--pf-space-5);
+}
+
+.kanban-header,
+.taskboard-header,
+.issue-header,
+.backlog-top {
+    background: $m3-background;
+}
+
+.kanban-header,
+.taskboard-header,
+.issue-header {
+    padding: 0 0 var(--pf-space-3);
+}
+
+.taskboard-actions,
+.backlog-table-options {
+    gap: var(--pf-space-3);
+    min-height: var(--pf-control-height);
+}
+
+.kanban-table-options-start,
+.taskboard-table-options-start,
+.issue-table-options-start,
+.backlog-table-options-start {
+    gap: var(--pf-space-2);
+
+    > * {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    tg-input-search {
+        margin: 0;
+        max-width: 22rem;
+        width: 34vw;
+    }
+}
+
+.active-filter-chips {
+    padding-bottom: var(--pf-space-3);
+    padding-top: var(--pf-space-2);
+}
+
+.backlog-table > tg-active-filter-chips {
+    display: block;
+}
+
+.active-filter-chip {
+    background: $m3-secondary-container;
+    border-color: transparent;
+    color: $m3-on-secondary-container;
+    transition: background-color var(--pf-motion-fast) ease,
+        border-color var(--pf-motion-fast) ease;
+
+    &:hover {
+        background: mix($m3-secondary-container, $m3-on-secondary-container, 88%);
+        border-color: $m3-outline;
+    }
+
+    .active-filter-chip-mode {
+        color: $m3-primary;
+    }
+
+    &.is-excluded {
+        background: rgba($m3-error, .12);
+        border-color: rgba($m3-error, .35);
+        color: $m3-error;
+
+        &:hover {
+            background: rgba($m3-error, .18);
+            border-color: $m3-error;
+        }
+    }
+}

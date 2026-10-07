@@ -1,0 +1,184 @@
+// One filter drawer across Kanban, sprint taskboard, backlog and issues.
+.kanban-manager,
+.taskboard-manager,
+.backlog-manager {
+    grid-template-columns: var(--pf-drawer-width) minmax(0, 1fr);
+
+    &.expanded {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+.issue-container .filters-bar {
+    flex: 0 0 var(--pf-drawer-width);
+    width: var(--pf-drawer-width);
+}
+
+.kanban-filter,
+.taskboard-filter,
+.backlog-filter,
+.issue-container .filters-bar {
+    background: $m3-surface-container-low;
+    border: 1px solid $m3-outline-variant;
+    border-radius: var(--pf-radius-large);
+    box-shadow: 0 1px 2px rgba($black, .4), 0 4px 16px rgba($black, .16);
+    min-width: 0;
+    overflow: hidden;
+}
+
+.kanban-filter,
+.taskboard-filter {
+    height: 100%;
+}
+
+.backlog-filter,
+.issue-container .filters-bar {
+    top: var(--pf-sticky-header-height);
+}
+
+.kanban-filter tg-filter,
+.taskboard-filter tg-filter,
+.backlog-filter tg-filter,
+.issue-container .filters-bar tg-filter {
+    background: transparent;
+    border: 0;
+    height: 100%;
+    padding: var(--pf-space-4);
+}
+
+tg-filter {
+    color: $m3-on-surface;
+
+    .custom-filters {
+        border-bottom-color: $m3-outline-variant;
+        margin-bottom: var(--pf-space-3);
+        padding-bottom: var(--pf-space-3);
+    }
+
+    .custom-filters-header {
+        min-height: 2rem;
+    }
+
+    .custom-filters-title {
+        color: $m3-on-surface;
+    }
+
+    .add-custom-filter {
+        border-radius: 999px;
+        color: $m3-primary;
+        min-height: 2rem;
+        padding: 0 var(--pf-space-2);
+
+        &:hover:not([disabled]) {
+            background: rgba($m3-primary, .08);
+        }
+
+        &[disabled] {
+            color: rgba($m3-on-surface, .38);
+        }
+    }
+
+    .filters-advanced {
+        background: $m3-surface-container;
+        border-radius: var(--pf-radius-medium);
+        margin-bottom: var(--pf-space-3);
+        padding: var(--pf-space-3);
+    }
+
+    .filter-mode {
+        color: $m3-on-surface-variant;
+        min-height: 2rem;
+    }
+
+    .radio-mark {
+        border-color: $m3-outline;
+    }
+
+    .radio-mark-inner {
+        background: $m3-primary;
+    }
+
+    .filters-cats ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--pf-space-1);
+    }
+
+    .filters-cats li,
+    .filters-cats li:not(.active):last-child {
+        border: 0;
+    }
+
+    .filters-cat-single {
+        background: transparent;
+        border: 0;
+        border-radius: var(--pf-radius-small);
+        color: $m3-on-surface-variant;
+        min-height: 2.75rem;
+        padding: 0 var(--pf-space-3);
+        transition: background-color var(--pf-motion-fast) ease,
+            color var(--pf-motion-fast) ease;
+
+        &:focus {
+            border: 0;
+        }
+
+        &:hover {
+            background: rgba($m3-on-surface, .08);
+            color: $m3-on-surface;
+        }
+
+        &.selected {
+            background: $m3-secondary-container;
+            color: $m3-on-secondary-container;
+        }
+
+        .icon {
+            fill: currentColor;
+        }
+    }
+
+    .filter-list {
+        margin: var(--pf-space-1) 0 var(--pf-space-2);
+        padding: var(--pf-space-1) 0 var(--pf-space-1) var(--pf-space-2);
+    }
+
+    .single-filter {
+        background: transparent;
+        border: 0;
+        border-radius: var(--pf-radius-small);
+        color: $m3-on-surface;
+        margin-bottom: var(--pf-space-1);
+        min-height: 2.5rem;
+
+        &:active,
+        &:focus {
+            border: 0;
+        }
+
+        &.single-filter-type-general:hover,
+        &.single-filter-type-tag:hover,
+        &.single-filter-type-custom:hover,
+        &.single-filter-type-custom.active {
+            background: rgba($m3-primary, .1);
+        }
+
+        .number {
+            background: $m3-surface-container-high;
+            border-radius: 999px;
+            color: $m3-on-surface-variant;
+            min-width: 1.5rem;
+            padding: .125rem .375rem;
+            text-align: center;
+        }
+    }
+
+    .filters-applied {
+        border-bottom-color: $m3-outline-variant;
+    }
+
+    .filters-included,
+    .filters-excluded {
+        border-radius: var(--pf-radius-small);
+    }
+}

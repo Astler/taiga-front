@@ -109,12 +109,12 @@ tg-filter {
         }
     }
     &.single-filter-type-tag {
-        background: $color-link-tertiary;
+        background: $color-gray100;
         border-radius: 4px;
-        color: $color-white;
-        opacity: 1;
+        color: $color-black900;
+
         &:hover {
-            opacity: .7;
+            background: $color-white;
         }
     }
     &.single-filter-type-user {
@@ -128,6 +128,14 @@ tg-filter {
         height: 28px; /* default */
         margin-right: .5rem;
         width: 28px;
+    }
+    .filter-color-swatch {
+        border: 1px solid $color-gray400;
+        border-radius: 50%;
+        flex: 0 0 .75rem;
+        height: .75rem;
+        margin-left: .5rem;
+        width: .75rem;
     }
     .name {
         @include ellipsis(100%);
@@ -172,6 +180,12 @@ tg-filter {
             .remove-filter {
                 opacity: 1;
                 transition: opacity .1s linear;
+            }
+        }
+
+        &:focus-within {
+            .remove-filter {
+                opacity: 1;
             }
         }
     }
@@ -260,9 +274,19 @@ tg-filter {
 
     .custom-radio {
         display: inline;
+        position: relative;
 
         input[type='radio'] {
-            display: none;
+            height: 1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            width: 1px;
+
+            &:focus-visible + .filter-mode {
+                outline: 2px solid $color-link-primary;
+                outline-offset: 2px;
+            }
         }
     }
 

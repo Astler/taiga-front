@@ -121,6 +121,10 @@ div.wrapper(tg-backlog, ng-controller="BacklogController as ctrl",
                                     tg-check-permission="add_milestone"
                                 )
 
+                tg-active-filter-chips(
+                    filters="ctrl.selectedFilters"
+                    on-remove="ctrl.removeFilterBacklog(filter)"
+                )
                 .backlog-manager(ng-class="{'expanded': !ctrl.activeFilters}")
 
                     .backlog-filter(

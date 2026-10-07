@@ -129,13 +129,12 @@ input[type="time"] {
     border-radius: 12px;
     box-shadow: 0 1px 2px rgba($black, .45), 0 2px 6px rgba($black, .2);
     transition: background-color 180ms ease, border-color 180ms ease,
-        box-shadow 180ms ease, transform 180ms ease;
+        box-shadow 180ms ease;
 
     &:hover {
         background: $m3-surface-container;
         border-color: $m3-outline-variant;
         box-shadow: 0 2px 4px rgba($black, .5), 0 6px 14px rgba($black, .24);
-        transform: translateY(-1px);
     }
 }
 
@@ -574,8 +573,8 @@ tg-project-menu tg-project-navigation:not(.pressf-selector-guard) {
 // Menus and popovers sit one tonal level above their parent surface.
 .popover,
 .card-option-popup,
-.dropdown-user-profile,
-.dropdown-project-list,
+.navbar-dropdown,
+.navbar-dropdown-notifications,
 .tags-dropdown {
     background: $m3-surface-container;
     border: 1px solid $m3-outline-variant;
@@ -623,3 +622,11 @@ hr {
 * {
     scrollbar-color: $m3-outline $m3-surface-container-low;
 }
+
+// UI rework layer. Keep new work split by responsibility instead of growing
+// the legacy compatibility file into another monolith.
+@import 'rework/foundation';
+@import 'rework/legacy-bridge';
+@import 'rework/app-shell';
+@import 'rework/filter-drawer';
+@import 'rework/boards';

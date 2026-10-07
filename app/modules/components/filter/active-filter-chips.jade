@@ -1,0 +1,19 @@
+.active-filter-chips(
+    ng-if="vm.filters.length"
+)
+    button.active-filter-chip(
+        type="button"
+        ng-repeat="filter in vm.filters track by (filter.mode + ':' + filter.key)"
+        ng-class="{'is-excluded': filter.mode === 'exclude'}"
+        ng-click="vm.onRemove({filter: filter})"
+    )
+        span.active-filter-chip-mode(aria-hidden="true")
+            span(ng-if="filter.mode !== 'exclude'") +
+            span(ng-if="filter.mode === 'exclude'") −
+        span.active-filter-chip-swatch(
+            ng-if="filter.color"
+            ng-style="{'background-color': filter.color}"
+            aria-hidden="true"
+        )
+        span.active-filter-chip-name {{filter.name}}
+        tg-svg(svg-icon="icon-close")

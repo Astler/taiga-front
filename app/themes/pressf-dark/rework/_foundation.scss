@@ -1,0 +1,42 @@
+// Shared sizing and motion primitives for the UI rework. Components consume
+// these custom properties so later density/theme controls do not require a
+// second rewrite of the legacy stylesheets.
+:root {
+    --pf-space-1: .25rem;
+    --pf-space-2: .5rem;
+    --pf-space-3: .75rem;
+    --pf-space-4: 1rem;
+    --pf-space-5: 1.5rem;
+    --pf-radius-small: 8px;
+    --pf-radius-medium: 12px;
+    --pf-radius-large: 16px;
+    --pf-control-height: 2.5rem;
+    --pf-drawer-width: 19rem;
+    --pf-sticky-header-height: 7.1875rem;
+    --pf-motion-fast: 120ms;
+    --pf-motion-medium: 180ms;
+}
+
+body {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.main {
+    background: $m3-background;
+}
+
+.main h1,
+.main h2,
+.main h3 {
+    letter-spacing: -.01em;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
