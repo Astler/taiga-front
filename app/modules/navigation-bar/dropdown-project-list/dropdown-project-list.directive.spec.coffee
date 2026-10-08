@@ -85,3 +85,17 @@ describe "dropdownProjectListDirective", () ->
         elm = createDirective()
         scope.$apply()
         expect(elm.isolateScope().vm.projects.size).to.be.equal(3)
+
+    it "dismisses and restores the project dropdown", () ->
+        elm = createDirective()
+        scope.$apply()
+        target = {blur: sinon.spy()}
+
+        elm.isolateScope().vm.dismissDropdown({currentTarget: target})
+
+        expect(elm.isolateScope().vm.dropdownDismissed).to.be.true
+        expect(target.blur).to.have.been.calledOnce
+
+        elm.isolateScope().vm.resetDropdown()
+
+        expect(elm.isolateScope().vm.dropdownDismissed).to.be.false

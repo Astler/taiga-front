@@ -13,6 +13,7 @@ DropdownProjectListDirective = (rootScope, currentUserService, projectsService, 
         scope.vm.pinnedProjects = Immutable.List()
         scope.vm.projects = Immutable.List()
         scope.vm.hasProjects = false
+        scope.vm.dropdownDismissed = false
 
         refreshProjects = ->
             projects = currentUserService.projects.get("all") or Immutable.List()
@@ -37,6 +38,13 @@ DropdownProjectListDirective = (rootScope, currentUserService, projectsService, 
 
         scope.vm.newProject = ->
             projectsService.newProject()
+
+        scope.vm.dismissDropdown = (event) ->
+            scope.vm.dropdownDismissed = true
+            event.currentTarget.blur() if event?.currentTarget?.blur
+
+        scope.vm.resetDropdown = ->
+            scope.vm.dropdownDismissed = false
 
         scope.vm.isPinned = (project) ->
             return pinnedProjectsService.isPinned(project.get("id"))

@@ -11,6 +11,7 @@ ActiveFilterChipsDirective = () ->
             onRemove: "&"
         },
         bindToController: true,
+        controller: angular.noop,
         controllerAs: "vm",
         templateUrl: "components/filter/active-filter-chips.html"
     }

@@ -5,12 +5,16 @@
 //-
 //- Copyright (c) 2021-present Kaleidos INC
 
-.dropdown-project-list(ng-class="{'active': active}")
+.dropdown-project-list(
+    ng-class="{'active': active, 'is-dismissed': vm.dropdownDismissed}"
+    ng-mouseleave="vm.resetDropdown()"
+)
     a(
         href=""
         title="{{'PROJECT.NAVIGATION.PROJECTS' | translate}}"
         tg-nav="projects"
         class="dropdown-project-list-projects"
+        ng-focus="vm.resetDropdown()"
     )
         tg-svg(
             class="icon-folder"
@@ -32,6 +36,7 @@
                                 href="#"
                                 tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
                                 ng-class="{'blocked-project': project.get('blocked_code'), 'active': vm.currentProject == project.get('id')}"
+                                ng-click="vm.dismissDropdown($event)"
                             )
                                 img(
                                     tg-project-logo-small-src="::project"
@@ -61,6 +66,7 @@
                                 href="#"
                                 tg-nav="project:project=project.get('slug'),section=project.get('my_homepage')"
                                 ng-class="{'blocked-project': project.get('blocked_code'), 'active': vm.currentProject == project.get('id')}"
+                                ng-click="vm.dismissDropdown($event)"
                             )
                                 img(
                                     tg-project-logo-small-src="::project"
@@ -84,6 +90,7 @@
             a.see-more-projects-btn(
                 href="#",
                 tg-nav="projects",
+                ng-click="vm.dismissDropdown($event)"
                 title="{{'PROJECT.NAVIGATION.VIEW_ALL_PROJECTS' | translate}}",
                 translate="PROJECT.NAVIGATION.VIEW_ALL_PROJECTS")
 
@@ -91,6 +98,7 @@
                 a.create-project-btn.button-primary(
                     href="#",
                     tg-nav="create-project"
+                    ng-click="vm.dismissDropdown($event)"
                     title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
                 )
                     tg-svg(svg-icon="icon-plus-1")
@@ -102,6 +110,7 @@
                 a.create-project-btn.button-primary(
                     href="#",
                     tg-nav="create-project"
+                    ng-click="vm.dismissDropdown($event)"
                     title="{{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}",
                 )
                     span {{'PROJECT.NAVIGATION.ACTION_CREATE_PROJECT' | translate}}

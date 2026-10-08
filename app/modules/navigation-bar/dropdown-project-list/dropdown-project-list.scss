@@ -182,6 +182,12 @@
     }
 }
 
+.navbar .topnav-dropdown-wrapper .dropdown-project-list.is-dismissed {
+    .navbar-dropdown {
+        display: none;
+    }
+}
+
 .dropdown-project-list-projects {
     @include font-type(medium);
 
